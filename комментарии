@@ -1,0 +1,37 @@
+class App extends React.Component {
+  state = {
+    isClockVisible: true,
+    clockName: 0,
+  }
+  //именно стрелочная, так как берёт this из замыкания
+  //this.showClock в методе render()
+  showClock = () => {
+    this.setState({
+      isClockVisible: true,
+    })
+  }
+
+
+export class Clock extends React.Component {
+  state = { // this.state
+    time: new Date().toLocaleTimeString(),
+  }
+
+  componentDidMount() {
+    // this.stopInterval для других методов
+    this.stopInterval = setInterval(() => {
+      const date = new Date();
+
+      // eslint-disable-next-line
+      console.log(date.toLocaleTimeString());
+      this.setState({
+        time: new Date().toLocaleTimeString(),
+      });
+    }, 1000);
+  }
+
+  componentDidUpdate(prevProp) {
+    // Имена отличаются при обновлении сразу после клика, затем - совпадают, так и должно быть?
+    console.log(`Clock was renamed from ${prevProp.name} to ${this.props.name}`);
+  }
+...
