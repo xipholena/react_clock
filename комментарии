@@ -11,6 +11,13 @@ class App extends React.Component {
     })
   }
 
+//поскольку метод жизненного цикла отрабатывает и на родителе, если ребёнок изменился
+  componentDidUpdate(prevProp, prevState) {
+    console.log(`Clock was renamed from ${prevState.clockName} to ${this.state.clockName}`);
+  }
+
+...
+
 
 export class Clock extends React.Component {
   state = { // this.state
@@ -30,8 +37,5 @@ export class Clock extends React.Component {
     }, 1000);
   }
 
-  componentDidUpdate(prevProp) {
-    // Имена отличаются при обновлении сразу после клика, затем - совпадают, так и должно быть?
-    console.log(`Clock was renamed from ${prevProp.name} to ${this.props.name}`);
-  }
+
 ...
