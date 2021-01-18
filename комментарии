@@ -39,3 +39,7 @@ export class Clock extends React.Component {
 
 
 ...
+<Clock
+//вернуть после того как вернут предідущий вариант с ифчиком
+  //visible={this.state.isClockVisible}
+/>
